@@ -53,6 +53,7 @@ wsHook.newWebSocket;
     this.target = o.target || null;
     this.timeStamp = o.timeStamp || null;
     this.type = o.type || "message";
+		this.simulated = o.simulated || false;
     this.__proto__ = o.__proto__ || MessageEvent.__proto__;
   }
 
@@ -142,6 +143,7 @@ wsHook.newWebSocket;
       e.returnValue = true;
       e.srcElement = WSObject;
       e.target = WSObject;
+			e.simulated = true; // Tell that this event is simulated.
 
       WSObject.dispatchEvent(e);
     };
